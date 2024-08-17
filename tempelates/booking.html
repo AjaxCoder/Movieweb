@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking</title>
+    <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">MovieBooker</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Showtimes</a></li>
+                <li><a href="#">Booking</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search movies...">
+                <button type="button">Search</button>
+                <div class="dropdown">
+                    <button class="dropdown-button">Location</button>
+                    <div class="dropdown-content">
+                        <a href="#">New York</a>
+                        <a href="#">Los Angeles</a>
+                        <a href="#">Chicago</a>
+                        <a href="#">Houston</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <span>&#9776;</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="booking-form">
+            <h1>Book Your Movie Tickets</h1>
+            <form action="/submit-booking" method="POST">
+                <label for="movie">Select Movie:</label>
+                <select id="movie" name="movie" required>
+                    <option value="movie1">Movie Title 1</option>
+                    <option value="movie2">Movie Title 2</option>
+                    <option value="movie3">Movie Title 3</option>
+                </select>
+
+                <label for="showtime">Select Showtime:</label>
+                <select id="showtime" name="showtime" required>
+                    <option value="1">10:00 AM</option>
+                    <option value="2">01:00 PM</option>
+                    <option value="3">04:00 PM</option>
+                    <option value="4">07:00 PM</option>
+                </select>
+                <label for="tickets">Number of Tickets:</label>
+                <input type="number" id="tickets" name="tickets" min="1" max="10" required>
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Book Now</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 MovieBooker. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript to get the movie name from the query parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieName = urlParams.get('movie');
+            if (movieName) {
+                document.getElementById('movie-name').textContent = decodeURIComponent(movieName);
+            }
+        });
+    </script>
+    <script src="components/booking.js"></script>
+</body>
+</html>
